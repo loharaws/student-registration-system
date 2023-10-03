@@ -1,13 +1,12 @@
-FROM node:16.14-alpine
+FROM node:14
 
-WORKDIR /app-frontend
+WORKDIR /app
 
 COPY package*.json ./
 
-COPY . .
-
 RUN npm install
+RUN npm install @babel/plugin-proposal-private-property-in-object --save-dev
 
-EXPOSE 3000
+COPY . .
 
 CMD ["npm", "start"]
